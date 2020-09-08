@@ -3,11 +3,15 @@ import Router from 'vue-router'
 
 /* import pages */
 import PageHome from '@/pages/PageHome.vue'
+import PageCart from '@/pages/PageCart.vue'
+import PageOrder from '@/pages/PageOrder.vue'
 
 Vue.use(Router)
 
 export default new Router({
     routes: [
-        { path: '/', component: PageHome }
+        { path: '/home', component: PageHome },
+        { path: '/cart', component: PageCart },
+        { path: '/order', component: PageOrder }
     ]
 })

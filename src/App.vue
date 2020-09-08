@@ -30,6 +30,12 @@ export default {
       selected: null,
     };
   },
+  watch: {
+    selected(val) {
+      /* 通过id来产生router url，请保证id与路由url一致 */
+      this.$router.push("/" + val);
+    },
+  },
 };
 </script>
 
