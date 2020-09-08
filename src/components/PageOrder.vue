@@ -1,10 +1,10 @@
 <template>
   <div>
-    <mt-field label="昵称：" placeholder v-model="name"></mt-field>
-    <mt-field label="房号：" type="number" placeholder v-model="room"></mt-field>
-    <mt-field label="电话：" type="number" placeholder v-model="tele"></mt-field>
-
-    <mt-button type="default">提交订单</mt-button>
+    <mt-field label="昵称" v-model="name"></mt-field>
+    <mt-field label="房号" type="number" v-model="room"></mt-field>
+    <mt-field label="电话" type="number" v-model="tele"></mt-field>
+    <mt-field label="备注" type="textarea" rows="2" v-modal="remark"></mt-field>
+    <mt-button type="primary">提交订单</mt-button>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
       name: "",
       room: "",
       tele: "",
+      remark: "",
     };
   },
   methods: {
