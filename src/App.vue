@@ -1,51 +1,54 @@
 <template>
   <div id="app">
-    <router-view />
+    <Header id="header-bar" />
+    <router-view id="main-view" />
     <!--NavBar 路由按钮-->
-    <mt-tabbar v-model="selected">
-      <mt-tab-item id="home">
-        <font-awesome-icon icon="home" fixed-width />
-        <div>主页</div>
-      </mt-tab-item>
-      <mt-tab-item id="cart">
-        <font-awesome-icon icon="shopping-cart" fixed-width />
-        <div>购物车</div>
-      </mt-tab-item>
-      <mt-tab-item id="order">
-        <font-awesome-icon icon="list" fixed-width />
-        <div>订单</div>
-      </mt-tab-item>
-      <mt-tab-item id="about">
-        <font-awesome-icon icon="info" fixed-width />
-        <div>关于</div>
-      </mt-tab-item>
-    </mt-tabbar>
+    <NavBar id="nav-bar" />
   </div>
 </template>
 
 <script>
+import Header from "@/components/HeaderInfo.vue";
+import NavBar from "@/components/NavBar.vue";
+
 export default {
-  data() {
-    return {
-      selected: null,
-    };
-  },
-  watch: {
-    selected(val) {
-      /* 通过id来产生router url，请保证id与路由url一致 */
-      this.$router.push("/" + val);
-    },
+  components: {
+    Header,
+    NavBar,
   },
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#header-bar {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 31;
+  width: 100%;
+}
+
+#main-view {
+  margin-top: 2em;
+}
+
+#nav-bar {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 31;
+  width: 100%;
 }
 </style>

@@ -38,6 +38,54 @@ export default {
           tag: "",
           remark: "",
         },
+        {
+          imgLink:
+            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
+          name: "YOUR NAME",
+          price: "100$",
+          tag: "",
+          remark: "",
+        },
+        {
+          imgLink:
+            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
+          name: "YOUR NAME",
+          price: "100$",
+          tag: "",
+          remark: "",
+        },
+        {
+          imgLink:
+            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
+          name: "YOUR NAME",
+          price: "100$",
+          tag: "",
+          remark: "",
+        },
+        {
+          imgLink:
+            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
+          name: "YOUR NAME",
+          price: "100$",
+          tag: "",
+          remark: "",
+        },
+        {
+          imgLink:
+            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
+          name: "YOUR NAME",
+          price: "100$",
+          tag: "",
+          remark: "",
+        },
+        {
+          imgLink:
+            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
+          name: "YOUR NAME",
+          price: "100$",
+          tag: "",
+          remark: "",
+        },
       ],
     };
   },
