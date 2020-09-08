@@ -1,16 +1,34 @@
 <template>
   <div id="app">
-    <PageOrder />
+    <router-view />
+    <!--NavBar 路由按钮-->
+    <mt-tabbar v-model="selected">
+      <mt-tab-item id="home">
+        <font-awesome-icon icon="home" fixed-width />
+        <div>主页</div>
+      </mt-tab-item>
+      <mt-tab-item id="cart">
+        <font-awesome-icon icon="shopping-cart" fixed-width />
+        <div>购物车</div>
+      </mt-tab-item>
+      <mt-tab-item id="order">
+        <font-awesome-icon icon="list" fixed-width />
+        <div>订单</div>
+      </mt-tab-item>
+      <mt-tab-item id="about">
+        <font-awesome-icon icon="info" fixed-width />
+        <div>关于</div>
+      </mt-tab-item>
+    </mt-tabbar>
   </div>
 </template>
 
 <script>
-import PageOrder from "./components/PageOrder.vue";
-
 export default {
-  name: "App",
-  components: {
-    PageOrder,
+  data() {
+    return {
+      selected: null,
+    };
   },
 };
 </script>
