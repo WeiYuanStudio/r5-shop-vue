@@ -15,7 +15,8 @@
           <div class="good-stock">库存{{stock}}</div>
         </div>
         <div class="good-info-right-down-cart">
-          <div class="good-buy-num">购买数量：{{1}}</div>
+          <!-- <div class="good-buy-num">购买数量：{{cartNum}}</div> -->
+          <mt-badge size="normal" color="#C4C4C4">{{cartNum}}</mt-badge>
           <div @click="addToCart($event)">
             <font-awesome-icon class="cartModifyBtn" icon="plus-circle" fixed-width />
           </div>
@@ -44,6 +45,12 @@ export default {
       this.$store.commit("addShopCart", this.id);
     },
   },
+  computed: {
+    cartNum() {
+      // console.log(this.$store.getters.getCartNumById(this.id))
+      return this.$store.getters.getCartNumById(this.id);
+    }
+  }
 };
 </script>
 

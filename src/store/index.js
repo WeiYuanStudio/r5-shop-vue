@@ -15,32 +15,30 @@ export default new Vuex.Store({
         /**
          * 添加购物车
          * @param state 
-         * @param goodId 商品id
+         * @param id 商品id
          */
-        addShopCart(state, goodId) {
+        addShopCart(state, id) {
+            if (state.shopCart[id] === undefined) state.shopCart[id] = 0;
+            state.shopCart[id] = state.shopCart[id] + 1
+            let temp = JSON.parse(JSON.stringify(state.shopCart))
+            Vue.set(state, 'shopCart', temp) //避免getters被computed调用时不刷新
+        }
+    },
+    getters: {
+        /* 通过id获取某商品的购物车数量 */
+        getCartNumById: (state) => (id) => {
             console.log(state.shopCart)
-            console.log('invoke add Shop cart')
-
-            let isFound = false
-
-            state.shopCart.forEach(item => {
-                if (item.id === goodId) {
-                    if (item.num !== undefined) {
-                        ++item.num;
-                    } else {
-                        item.num = 1;
-                    }
-                    isFound = true
-                    return
+            if (state.shopCart[id] === undefined) state.shopCart[id] = 0;
+            return state.shopCart[id];
+        },
+        getCartCount: (state) => {
+            let count = 0;
+            for (let i of state.shopCart) {
+                if (i !== undefined) {
+                    count += i;
                 }
-            })
-
-            if (isFound) return
-
-            state.shopCart.push({
-                id: goodId,
-                num: 1
-            })
+            }
+            return count;
         }
     }
 });

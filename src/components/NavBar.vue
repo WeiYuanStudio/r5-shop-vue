@@ -7,6 +7,7 @@
       </mt-tab-item>
       <mt-tab-item id="cart">
         <font-awesome-icon class="router-icon" icon="shopping-cart" fixed-width />
+        <mt-badge size="small" color="red">{{cartCount}}</mt-badge>
         <div class="router-font">购物车</div>
       </mt-tab-item>
       <mt-tab-item id="order">
@@ -27,6 +28,11 @@ export default {
     return {
       selected: null,
     };
+  },
+  computed: {
+    cartCount() {
+      return this.$store.getters.getCartCount
+    }
   },
   watch: {
     selected(val) {
