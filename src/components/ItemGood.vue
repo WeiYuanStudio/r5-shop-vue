@@ -50,7 +50,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
 .good-info {
-  margin: 10px 2px;
+  margin: 8px 5px;
   padding: 10px;
   display: flex;
   flex-flow: row;
@@ -85,6 +85,8 @@ export default {
 
 .cartModifyBtn {
   color: red;
+  width: 20px;
+  height: 20px;
 }
 
 .good-info-right-down-info {
@@ -97,6 +99,7 @@ export default {
   display: flex;
   flex-flow: row;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .good-price {

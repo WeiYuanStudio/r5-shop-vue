@@ -23,14 +23,15 @@ export default {
 
 <style>
 #header-bar-bg {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 #online-status {
-  background-color: rgba(57,197,187, 0.4);
+  background-color: rgba(57, 197, 187, 0.4);
 }
 
 #offline-status {
-  background-color:rgba(255, 0, 34, 0.4);
+  background-color: rgba(255, 0, 34, 0.4);
 }
 </style>
