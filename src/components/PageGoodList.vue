@@ -103,10 +103,10 @@ export default {
     bottom: 30px;
     z-index: 50;
     color: red;
-    transition: all 0.5s cubic-bezier(0.42, 0, 1, 1);
+    transition: all 0.3s cubic-bezier(0.42, 0, 1, 1);
 
     .inner {
-      transition: all 0.5s linear;
+      transition: all 0.3s linear;
     }
   }
 }
