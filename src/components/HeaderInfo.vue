@@ -1,10 +1,12 @@
 <template>
-  <div style="background-color: #FFFFFF">
-    <div v-if="status" class="online-status">
-      <div style="background-color: rgba(57,197,187, 0.4)">在线中...</div>
-    </div>
-    <div v-else class="offline-status">
-      <div>离线中...</div>
+  <div>
+    <div id="header-bar-bg">
+      <div v-if="status">
+        <div id="online-status">在线中...</div>
+      </div>
+      <div v-else>
+        <div id="offline-status">离线中...</div>
+      </div>
     </div>
   </div>
 </template>
@@ -20,4 +22,15 @@ export default {
 </script>
 
 <style>
+#header-bar-bg {
+  background-color: #FFFFFF;
+}
+
+#online-status {
+  background-color: rgba(57,197,187, 0.4);
+}
+
+#offline-status {
+  background-color:rgba(255, 0, 34, 0.4);
+}
 </style>

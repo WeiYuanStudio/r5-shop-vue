@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>PAGEHOME</div>
     <div>
       <PageGoodList />
     </div>

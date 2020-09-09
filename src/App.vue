@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <!-- 在线状态头 -->
     <Header id="header-bar" />
+    <!--单页路由router-view-->
     <router-view id="main-view" />
     <!--NavBar 路由按钮-->
     <NavBar id="nav-bar" />
