@@ -6,8 +6,11 @@
     <div class="good-info-right">
       <div>{{name}}</div>
       <div>{{price}}</div>
-      <div></div>
       <div>{{remark}}</div>
+      <div>购买数量：{{}}</div>
+      <div @click="addToCart">
+        <font-awesome-icon class="cartModifyBtn" icon="plus-circle" fixed-width />
+      </div>
     </div>
   </div>
 </template>
@@ -17,14 +20,14 @@ export default {
   props: ["goodInfo"],
   data() {
     return {
-      imgLink: "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-      name: "YOUR NAME",
-      price: "100$",
-      stock: "", //库存
-      tag: "",
-      remark: "",
+      ...this.goodInfo
     };
   },
+  methods: {
+    addToCart() {
+      this.$store.commit('addShopCart', this.id)
+    }
+  }
 };
 </script>
 
@@ -37,5 +40,9 @@ export default {
 
 .good-info-right {
   margin: 10px 20px;
+}
+
+.cartModifyBtn {
+  color: red;
 }
 </style>

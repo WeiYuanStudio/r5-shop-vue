@@ -15,73 +15,28 @@ export default {
     return {
       goodList: [
         {
+          id: 1,
           imgLink:
             "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME",
+          name: "YOUR NAME1",
           price: "100$",
           tag: "",
           remark: "",
         },
         {
+          id: 2,
           imgLink:
             "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME",
+          name: "YOUR NAME2",
           price: "100$",
           tag: "",
           remark: "",
         },
         {
+          id: 3,
           imgLink:
             "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME",
-          price: "100$",
-          tag: "",
-          remark: "",
-        },
-        {
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME",
-          price: "100$",
-          tag: "",
-          remark: "",
-        },
-        {
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME",
-          price: "100$",
-          tag: "",
-          remark: "",
-        },
-        {
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME",
-          price: "100$",
-          tag: "",
-          remark: "",
-        },
-        {
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME",
-          price: "100$",
-          tag: "",
-          remark: "",
-        },
-        {
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME",
-          price: "100$",
-          tag: "",
-          remark: "",
-        },
-        {
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME",
+          name: "YOUR NAME3",
           price: "100$",
           tag: "",
           remark: "",
