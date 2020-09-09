@@ -16,7 +16,7 @@
         </div>
         <div class="good-info-right-down-cart">
           <div class="good-buy-num">购买数量：{{1}}</div>
-          <div @click="addToCart">
+          <div @click="addToCart($event)">
             <font-awesome-icon class="cartModifyBtn" icon="plus-circle" fixed-width />
           </div>
         </div>
@@ -34,7 +34,13 @@ export default {
     };
   },
   methods: {
-    addToCart() {
+    addToCart(e) {
+      e.mark = "test";
+      this.$emit("cart-ball", e);
+      // let el = e.target;
+      // let rect = el.getBoundingClientRect();
+      // console.log(rect.left);
+      //
       this.$store.commit("addShopCart", this.id);
     },
   },
@@ -42,14 +48,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="stylus" scoped>
 .good-info {
   margin: 10px 2px;
   padding: 10px;
   display: flex;
   flex-flow: row;
   border-radius: 20px;
-
   background-color: #fff;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
   transition: all 0.1s ease-in;
