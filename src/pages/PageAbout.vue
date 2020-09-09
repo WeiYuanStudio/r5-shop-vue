@@ -1,5 +1,8 @@
 <template>
-  <div>PAGEABOUT</div>
+  <div>
+    <div>PAGEABOUT</div>
+    <div>开发中......</div>
+  </div>
 </template>
 
 <script>

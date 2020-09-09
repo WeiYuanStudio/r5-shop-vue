@@ -1,15 +1,16 @@
 <template>
   <div>
     <div class="good-info">
-        <div class="good-info-left">
-             <img v-lazy="imgLink" />
-        </div>
-        <div class="good-info-right">
+      <div class="good-info-left">
+        <img v-lazy="imgLink" />
+      </div>
+      <div class="good-info-right">
         <div>{{name}}</div>
         <div>{{price}}</div>
-       
+        <div>购买数量：{{}}</div>
+      </div>
     </div>
-  </div>            
+  </div>
 </template>
 
 <script>
