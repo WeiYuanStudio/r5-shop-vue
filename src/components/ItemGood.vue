@@ -1,7 +1,7 @@
 <template>
   <div class="good-info">
     <div class="good-info-left">
-      <img v-lazy="imgLink" />
+      <img class="goods-img" v-lazy="img" />
     </div>
     <!---->
     <div class="good-info-right">
@@ -116,5 +116,12 @@ export default {
 .good-stock {
   font-size: 0.8em;
   margin: 1px 4px;
+}
+
+.goods-img {
+  width: 120px;
+  height: 120px;
+  border: solid 1px white;
+  border-radius: 15px;
 }
 </style>

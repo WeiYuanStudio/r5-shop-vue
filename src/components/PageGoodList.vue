@@ -19,6 +19,7 @@
 
 <script>
 import ItemGood from "@/components/ItemGood.vue";
+import axios from 'axios';
 
 export default {
   components: { ItemGood },
@@ -28,59 +29,13 @@ export default {
         show: false,
         el: null,
       },
-      goodList: [
-        {
-          id: 1,
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME1",
-          price: "100",
-          tag: "",
-          remark: "备注",
-          stock: "5",
-        },
-        {
-          id: 2,
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME2",
-          price: "100",
-          tag: "",
-          remark: "",
-          stock: "",
-        },
-        {
-          id: 3,
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME3",
-          price: "100",
-          tag: "",
-          remark: "",
-          stock: "",
-        },
-        {
-          id: 4,
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME2",
-          price: "100",
-          tag: "",
-          remark: "",
-          stock: "",
-        },
-        {
-          id: 5,
-          imgLink:
-            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
-          name: "YOUR NAME3",
-          price: "100",
-          tag: "",
-          remark: "",
-          stock: "",
-        },
-      ],
+      goodList: [],
     };
+  },
+  mounted() {
+    axios.get("/api/goods").then(resp => {
+      this.goodList = resp.data;
+    })
   },
   methods: {
     beforeEnter(el) {
