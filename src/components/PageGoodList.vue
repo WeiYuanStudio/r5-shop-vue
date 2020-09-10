@@ -59,6 +59,26 @@ export default {
           remark: "",
           stock: "",
         },
+        {
+          id: 4,
+          imgLink:
+            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
+          name: "YOUR NAME2",
+          price: "100",
+          tag: "",
+          remark: "",
+          stock: "",
+        },
+        {
+          id: 5,
+          imgLink:
+            "https://m.media-amazon.com/images/I/51TfrooMUWL._SL160_.jpg",
+          name: "YOUR NAME3",
+          price: "100",
+          tag: "",
+          remark: "",
+          stock: "",
+        },
       ],
     };
   },

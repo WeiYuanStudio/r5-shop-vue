@@ -35,6 +35,7 @@ export default {
   margin: 8px 4px;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
   background-color: #fff;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
   transition: all 0.1s ease-in;
@@ -48,7 +49,7 @@ export default {
 }
 
 .order-row-2 {
-  margin: 5px;
+  margin: 0 5px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -79,7 +80,13 @@ export default {
   background-color: rgb(119, 201, 53);
 }
 
+.order-time {
+  margin: 12px 0 0 0;
+  font-size: 0.9em;
+}
+
 .order-price {
   color: rgb(228, 0, 0);
+  font-size: 1.5em;
 }
 </style>

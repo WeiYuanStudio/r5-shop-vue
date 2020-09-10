@@ -7,7 +7,6 @@
       </mt-tab-item>
       <mt-tab-item id="cart">
         <font-awesome-icon class="router-icon" icon="shopping-cart" fixed-width />
-        <mt-badge size="small" color="red">{{cartCount}}</mt-badge>
         <div class="router-font">购物车</div>
       </mt-tab-item>
       <mt-tab-item id="order">
@@ -19,6 +18,9 @@
         <div class="router-font">关于</div>
       </mt-tab-item>
     </mt-tabbar>
+    <div v-show="cartCount!=0">
+      <mt-badge size="small" color="red" class="cart-count-badge">{{cartCount}}</mt-badge>
+    </div>
   </div>
 </template>
 
@@ -31,8 +33,8 @@ export default {
   },
   computed: {
     cartCount() {
-      return this.$store.getters.getCartCount
-    }
+      return this.$store.getters.getCartCount;
+    },
   },
   watch: {
     selected(val) {
@@ -47,5 +49,12 @@ export default {
 .router-icon {
   font-size: 20px;
   margin: 4px;
+}
+
+.cart-count-badge {
+  position: fixed;
+  left: 40%;
+  bottom: 30px;
+  z-index: 50;
 }
 </style>
