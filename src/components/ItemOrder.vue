@@ -6,6 +6,7 @@
           <div class="order-number">{{number}}</div>
           <div class="order-mode">{{mode}}</div>
         </div>
+
         <div class="order-state">{{state}}</div>
       </div>
       <div class="order-row-2">
@@ -37,7 +38,7 @@ export default {
   flex-direction: column;
   border-radius: 10px;
   background-color: #fff;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
   transition: all 0.1s ease-in;
 }
 
@@ -46,6 +47,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border-bottom: solid 1px gray;
 }
 
 .order-row-2 {
@@ -77,7 +79,7 @@ export default {
   margin: 0 2px;
   padding: 0 3px;
   border-radius: 20px;
-  background-color: rgb(119, 201, 53);
+  background-color: rgba(119, 201, 53, 0.5);
 }
 
 .order-time {

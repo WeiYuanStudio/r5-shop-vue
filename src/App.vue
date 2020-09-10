@@ -42,7 +42,7 @@ export default {
 }
 
 #main-view {
-  margin: 2em 0 4em 0;
+  margin: 20.8px 0 54px 0;
 }
 
 #nav-bar {
