@@ -18,8 +18,10 @@
 </template>
 
 <script>
+import { Indicator, Toast } from "mint-ui";
+
 import ItemGood from "@/components/ItemGood.vue";
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   components: { ItemGood },
@@ -33,9 +35,22 @@ export default {
     };
   },
   mounted() {
-    axios.get("/api/goods").then(resp => {
-      this.goodList = resp.data;
-    })
+    Indicator.open("店小二正在拼命加载商品...");
+    axios
+      .get("/api/goods")
+      .then((resp) => {
+        this.goodList = resp.data;
+      })
+      .catch(() => {
+        Toast({
+          message: "加载商品列表失败",
+          position: "bottom",
+          duration: 2000,
+        });
+      })
+      .finally(() => {
+        Indicator.close();
+      });
   },
   methods: {
     beforeEnter(el) {

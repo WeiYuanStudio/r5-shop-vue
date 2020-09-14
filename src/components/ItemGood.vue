@@ -50,7 +50,6 @@ export default {
   },
   computed: {
     cartNum() {
-      // console.log(this.$store.getters.getCartNumById(this.id))
       return this.$store.getters.getCartNumById(this.id);
     }
   }

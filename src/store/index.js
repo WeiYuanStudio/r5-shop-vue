@@ -5,12 +5,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        shopCart: []
+        shopCart: {}
     },
     mutations: {
         /* 清空购物车 */
         cleanShopCart(state) {
-            state.shopCart = []
+            state.shopCart = {}
         },
         /**
          * 添加购物车
@@ -41,9 +41,9 @@ export default new Vuex.Store({
         },
         getCartCount: (state) => {
             let count = 0;
-            for (let i of state.shopCart) {
-                if (i !== undefined) {
-                    count += i;
+            for (let i in state.shopCart) {
+                if (state.shopCart[i] !== undefined) {
+                    count += state.shopCart[i];
                 }
             }
             return count;

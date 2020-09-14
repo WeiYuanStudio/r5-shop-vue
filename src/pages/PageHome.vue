@@ -1,16 +1,16 @@
 <template>
   <div>
     <div>
-      <PageGoodList />
+      <GoodsList />
     </div>
   </div>
 </template>
 
 <script>
-import PageGoodList from "@/components/PageGoodList.vue";
+import GoodsList from "@/components/GoodsList.vue";
 
 export default {
-  components: { PageGoodList },
+  components: { GoodsList },
   data() {
     return {};
   },
