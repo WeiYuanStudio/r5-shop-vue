@@ -2,6 +2,7 @@
   <div class="good-info">
     <div class="good-info-left">
       <img class="goods-img" v-lazy="img" />
+      <!-- Todo:设定备用图案 -->
     </div>
     <!---->
     <div class="good-info-right">
@@ -17,11 +18,11 @@
         <div class="good-info-right-down-cart">
           <!-- <div class="good-buy-num">购买数量：{{cartNum}}</div> -->
           <div @click="addToCart($event)">
-            <font-awesome-icon class="cartModifyBtn" icon="plus-circle" fixed-width />
+            <font-awesome-icon class="cart-modify-btn" icon="plus-circle" fixed-width />
           </div>
           <mt-badge size="normal" color="#C4C4C4">{{cartNum}}</mt-badge>
           <div @click="removeFromCart($event)">
-            <font-awesome-icon class="cartModifyBtn" icon="plus-circle" fixed-width />
+            <font-awesome-icon :class="(cartNum !== 0) ? ['cart-modify-btn'] : ['cart-modify-btn-disable']" icon="minus-circle" fixed-width />
           </div>
         </div>
       </div>
@@ -92,8 +93,14 @@ export default {
   color: #e4393c;
 }
 
-.cartModifyBtn {
+.cart-modify-btn {
   color: red;
+  width: 20px;
+  height: 20px;
+}
+
+.cart-modify-btn-disable {
+  color: gray;
   width: 20px;
   height: 20px;
 }

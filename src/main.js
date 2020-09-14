@@ -12,7 +12,7 @@ import { Lazyload } from 'mint-ui'
 
 /* fontfont-awesome */
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faShoppingCart, faList, faInfo, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faShoppingCart, faList, faInfo, faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* Use Vue */
@@ -25,6 +25,7 @@ library.add(faShoppingCart)
 library.add(faList)
 library.add(faInfo)
 library.add(faPlusCircle)
+library.add(faMinusCircle)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
