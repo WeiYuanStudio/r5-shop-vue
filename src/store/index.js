@@ -20,6 +20,14 @@ export default new Vuex.Store({
         addShopCart(state, id) {
             if (state.shopCart[id] === undefined) state.shopCart[id] = 0;
             state.shopCart[id] = state.shopCart[id] + 1
+
+            let temp = JSON.parse(JSON.stringify(state.shopCart))
+            Vue.set(state, 'shopCart', temp) //避免getters被computed调用时不刷新
+        },
+        removeShopCart(state, id) {
+            if (state.shopCart[id] === undefined) throw 'goods id undefined';
+            if (state.shopCart[id] >= 1) state.shopCart[id] = state.shopCart[id] - 1;
+ 
             let temp = JSON.parse(JSON.stringify(state.shopCart))
             Vue.set(state, 'shopCart', temp) //避免getters被computed调用时不刷新
         }

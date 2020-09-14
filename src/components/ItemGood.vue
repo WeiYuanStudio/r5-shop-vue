@@ -16,8 +16,11 @@
         </div>
         <div class="good-info-right-down-cart">
           <!-- <div class="good-buy-num">购买数量：{{cartNum}}</div> -->
-          <mt-badge size="normal" color="#C4C4C4">{{cartNum}}</mt-badge>
           <div @click="addToCart($event)">
+            <font-awesome-icon class="cartModifyBtn" icon="plus-circle" fixed-width />
+          </div>
+          <mt-badge size="normal" color="#C4C4C4">{{cartNum}}</mt-badge>
+          <div @click="removeFromCart($event)">
             <font-awesome-icon class="cartModifyBtn" icon="plus-circle" fixed-width />
           </div>
         </div>
@@ -36,14 +39,13 @@ export default {
   },
   methods: {
     addToCart(e) {
-      e.mark = "test";
       this.$emit("cart-ball", e);
-      // let el = e.target;
-      // let rect = el.getBoundingClientRect();
-      // console.log(rect.left);
-      //
+
       this.$store.commit("addShopCart", this.id);
     },
+    removeFromCart() {
+      this.$store.commit('removeShopCart', this.id);
+    }
   },
   computed: {
     cartNum() {
