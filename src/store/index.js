@@ -5,9 +5,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        shopCart: {}
+        shopCart: {},
+        isLogin: false,
+        allProductNum: Number
     },
     mutations: {
+
+        changeNum(state,num){
+            state.allProductNum = num
+        },
+
         /* 清空购物车 */
         cleanShopCart(state) {
             state.shopCart = {}
@@ -30,6 +37,13 @@ export default new Vuex.Store({
  
             let temp = JSON.parse(JSON.stringify(state.shopCart))
             Vue.set(state, 'shopCart', temp) //避免getters被computed调用时不刷新
+        },
+        removeAllShopCart(state){
+            state.shopCart = {}
+        },
+
+        changeLogin(){
+            this.state.isLogin = !this.state.isLogin;
         }
     },
     getters: {
@@ -47,6 +61,9 @@ export default new Vuex.Store({
                 }
             }
             return count;
+        },
+        getCartMap: state => {
+            return state.shopCart;
         }
     }
 });

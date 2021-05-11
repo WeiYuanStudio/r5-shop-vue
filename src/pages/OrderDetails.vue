@@ -4,19 +4,19 @@
       <div class="order-details-state">状态</div>
       <div class="order-details-goods">
         商品
-        <div v-for="(goods, index) in goodsList" :key="index">
-          <DetailsGoods :goodsInfo="goods" />
+        <div v-for="(item,i) in goods" :key="i">
+          <DetailsGoods :goodsInfo="item" />
         </div>
       </div>
       <div class="order-details-user">
-        <div class="order-details-user-name">昵称</div>
-        <div class="order-details-user-room">房号</div>
-        <div class="order-details-user-tele">手机号</div>
+        <div class="order-details-user-name">昵称: {{goodsList.name}}</div>
+        <div class="order-details-user-room">房号: {{goodsList.address}}</div>
+        <div class="order-details-user-tele">手机号: {{goodsList.tele}}</div>
       </div>
       <div class="order-details-order">
-        <div class="order-details-order-number">订单号</div>
-        <div class="order-details-order-mode">支付方式</div>
-        <div class="order-details-order-time">下单时间</div>
+        <div class="order-details-order-number">订单号: {{goodsList.id}}</div>
+        <div class="order-details-order-mode">支付方式: {{goodsList.mode}}</div>
+        <div class="order-details-order-time">下单时间: {{goodsList.time}}</div>
       </div>
     </div>
   </div>
@@ -24,6 +24,7 @@
 
 <script>
 import DetailsGoods from "@/components/DetailsGoods.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -47,8 +48,19 @@ export default {
           price: "100",
         },
       ],
+      goods: [],
     };
   },
+  mounted() {
+    this.goodsList = this.$route.query.list
+    let keys = Object.keys(this.goodsList.good)
+    for (let i = 0; i < keys.length; i++) {
+      axios.get("/api/good/" + keys[i]).then(resp => {
+        resp.data.num = this.goodsList.good[keys[i]]
+        this.goods.push(resp.data)
+      })
+    }
+  }
 };
 </script>
 

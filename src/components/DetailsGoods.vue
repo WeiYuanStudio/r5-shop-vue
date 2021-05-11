@@ -1,7 +1,7 @@
 <template>
   <div class="good-info">
     <div class="good-info-left">
-      <img v-lazy="imgLink" />
+      <img class="goods-img" v-lazy="img" />
     </div>
     <!---->
     <div class="good-info-right">
@@ -9,7 +9,7 @@
         <div class="good-name">{{name}}</div>
         <div class="good-price">￥{{price}}</div>
       </div>
-      <div class="good-info-right-down">数量</div>
+      <div class="good-info-right-down">数量  {{num}}</div>
     </div>
   </div>
 </template>
@@ -50,5 +50,11 @@ export default {
 
 .good-info-right-down-info {
   text-align: left;
+}
+.goods-img {
+  width: 120px;
+  height: 120px;
+  border: solid 1px white;
+  border-radius: 15px;
 }
 </style>
