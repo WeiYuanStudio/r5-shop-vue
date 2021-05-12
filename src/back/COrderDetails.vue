@@ -12,11 +12,20 @@
         <div class="order-details-user-name">昵称: {{goodsList.name}}</div>
         <div class="order-details-user-room">房号: {{goodsList.address}}</div>
         <div class="order-details-user-tele">手机号: {{goodsList.tele}}</div>
+        <div>备注: {{goodsList.remark}}</div>
       </div>
       <div class="order-details-order">
         <div class="order-details-order-number">订单号: {{goodsList.id}}</div>
         <div class="order-details-order-mode">支付方式: {{goodsList.mode}}</div>
         <div class="order-details-order-time">下单时间: {{goodsList.time}}</div>
+      </div>
+      <div>
+        <mt-button type="primary" style="margin: 10px" @click="go">出发配送/完成</mt-button>
+        <mt-button type="primary" style="margin: 10px" @click="switchBtn='edit';">修改</mt-button>
+        <mt-button type="primary" style="margin: 10px" @click="del">删除</mt-button>
+      </div>
+      <div>
+        <EditOrder :data="goodsList" v-if="switchBtn === 'edit'"/>
       </div>
     </div>
   </div>
@@ -25,9 +34,12 @@
 <script>
 import DetailsGoods from "@/components/DetailsGoods.vue";
 import axios from "axios";
+import EditOrder from "@/back/EditOrder";
+import {Toast} from "mint-ui";
 
 export default {
   components: {
+    EditOrder,
     DetailsGoods,
   },
   data() {
@@ -49,18 +61,41 @@ export default {
         },
       ],
       goods: [],
+      switchBtn: null
     };
   },
   methods:{
-    methods:{
-      state(state){
-        if (state === 0)
-          return "待配送"
-        if (state === 1)
-          return "配送中"
-        if (state === 2)
-          return "完成"
-      }
+    state(state){
+      if (state === 0)
+        return "待配送"
+      if (state === 1)
+        return "配送中"
+      if (state === 2)
+        return "完成"
+    },
+    del(){
+      axios.delete("/controller/order/" + this.goodsList.id).then(resp => {
+        Toast({
+          message: resp.data.message,
+          position: "bottom",
+          duration: 2000,
+        });
+        if (resp.data.code !== 400){
+          this.$router.push("/controller")
+        }
+      })
+    },
+    go(){
+      axios.put("/controller/order/changeState/" + this.goodsList.id).then(resp => {
+        Toast({
+          message: resp.data.message,
+          position: "bottom",
+          duration: 2000,
+        });
+        if (resp.data.code !== 400){
+          this.$router.push("/controller")
+        }
+      })
     }
   },
   mounted() {

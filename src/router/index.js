@@ -8,6 +8,8 @@ import PageOrder from '@/pages/PageOrder.vue'
 import PageAbout from '@/pages/PageAbout.vue'
 import FormOrder from '@/pages/FormOrder.vue'
 import OrderDetails from '@/pages/OrderDetails.vue'
+import Controller from "@/back/Controller";
+import COrderDetails from "@/back/COrderDetails";
 
 Vue.use(Router)
 
@@ -19,5 +21,7 @@ export default new Router({
         { path: '/about', component: PageAbout },
         { path: '/form', component: FormOrder },
         { path: '/details', component: OrderDetails },
+        { path: '/controller', component: Controller},
+        {path: '/controller/order/details', component: COrderDetails}
     ]
 })

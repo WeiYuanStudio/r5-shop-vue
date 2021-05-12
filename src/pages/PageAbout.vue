@@ -9,7 +9,7 @@
       </label>
       <button class="login_btn" @click="login" type="button">登录</button>
       <div style="margin-top: 10px">
-        <span style="color: #000099;" @click="login">后台</span>
+        <span style="color: #000099;" @click="back">后台</span>
         <span style="color: #000099" @click="register">注册</span>
       </div>
     </div>
@@ -102,6 +102,9 @@ export default {
                 }
               }
           )
+    },
+    back(){
+      this.$router.push("/controller")
     }
   }
 };
