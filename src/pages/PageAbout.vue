@@ -9,12 +9,12 @@
       </label>
       <button class="login_btn" @click="login" type="button">登录</button>
       <div style="margin-top: 10px">
-        <span style="color: #000099;" @click="back">后台</span>
         <span style="color: #000099" @click="register">注册</span>
       </div>
     </div>
     <div class="profile_form" v-show="$store.state.isLogin">
-      <button class="logout_btn" @click="logout" type="button">退出</button>
+      <mt-button class="logout_btn" @click="logout" type="button">退出</mt-button>
+      <mt-button style="color: #000099;" @click="back">后台</mt-button>
     </div>
   </div>
 </template>

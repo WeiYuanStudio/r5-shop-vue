@@ -4,6 +4,7 @@
       <mt-tab-item id="1">订单</mt-tab-item>
       <mt-tab-item id="2">待配送</mt-tab-item>
       <mt-tab-item id="3">用户</mt-tab-item>
+      <mt-tab-item id="4">商品</mt-tab-item>
     </mt-navbar>
 
     <mt-tab-container v-model="selected">
@@ -11,10 +12,13 @@
         <Orders :orders="orders"/>
       </mt-tab-container-item>
       <mt-tab-container-item id="2">
-        <mt-cell v-for="n in 4" :key="n" :title="'测试 ' + n" />
+        <WaitFor :orders="orders"/>
       </mt-tab-container-item>
       <mt-tab-container-item id="3">
-        <mt-cell v-for="n in 6" :key="n" :title="'选项 ' + n" />
+        <Users/>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="4">
+        <CGoodsList/>
       </mt-tab-container-item>
     </mt-tab-container>
   </div>
@@ -22,11 +26,17 @@
 
 <script>
 import Orders from "@/back/Orders";
+import WaitFor from "@/back/WaitFor";
 import axios from "axios";
+import Users from "@/back/Users";
+import CGoodsList from "@/back/CGoodsList";
 export default {
   name: "Controller",
   components: {
-    Orders
+    CGoodsList,
+    Users,
+    Orders,
+    WaitFor
   },
   data(){
     return{

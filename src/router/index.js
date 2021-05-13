@@ -10,6 +10,7 @@ import FormOrder from '@/pages/FormOrder.vue'
 import OrderDetails from '@/pages/OrderDetails.vue'
 import Controller from "@/back/Controller";
 import COrderDetails from "@/back/COrderDetails";
+import EditProduct from "@/back/EditProduct";
 
 Vue.use(Router)
 
@@ -22,6 +23,7 @@ export default new Router({
         { path: '/form', component: FormOrder },
         { path: '/details', component: OrderDetails },
         { path: '/controller', component: Controller},
-        {path: '/controller/order/details', component: COrderDetails}
+        {path: '/controller/order/details', component: COrderDetails},
+        {path: '/controller/editProduct', component: EditProduct}
     ]
 })
