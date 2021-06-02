@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-good-list">
-      <div v-for="(good, index) in goodList" :key="index">
+      <div v-for="(good, index) in productList" :key="index">
         <ItemGood :goodInfo="good" v-on:cart-ball="onCartBall($event)" />
       </div>
       <div class="ball-wrap">
@@ -31,15 +31,15 @@ export default {
         show: false,
         el: null,
       },
-      goodList: [],
+      productList: [],
     };
   },
   mounted() {
     Indicator.open("店小二正在拼命加载商品...");
     axios
-      .get("/api/goods")
+      .get("/api/products/")
       .then((resp) => {
-        this.goodList = resp.data;
+        this.productList = resp.data.results;
       })
       .catch(() => {
         Toast({

@@ -13,10 +13,10 @@ export default {
   },
   mounted() {
     axios
-      .get("/api/goods")
+      .get("/api/products")
       .then((resp) => {
         this.total = 0;
-        let goodsList = resp.data;
+        let goodsList = resp.data.results;
         let cart = this.$store.state.shopCart;
         for (let k in cart) {
           console.log(k);

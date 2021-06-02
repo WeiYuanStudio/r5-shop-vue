@@ -1,7 +1,7 @@
 <template>
   <div class="good-info">
     <div class="good-info-left">
-      <img class="goods-img" v-lazy="img" />
+      <img class="goods-img" v-lazy="image" />
       <!-- Todo:设定备用图案 -->
     </div>
     <!---->

@@ -24,8 +24,8 @@ export default {
     }
   },
   mounted() {
-    axios.get("/api/goods").then(resp => {
-      this.goods = resp.data
+    axios.get("/api/products").then(resp => {
+      this.goods = resp.data.results
     })
     this.addNextId();
   },
