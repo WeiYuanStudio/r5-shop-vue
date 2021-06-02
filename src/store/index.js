@@ -1,17 +1,26 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {getItem, setItem} from '@/utils/storage'
 
 Vue.use(Vuex);
 
+
 export default new Vuex.Store({
     state: {
+        // //榜的登录
+        userToken: getItem("user-token"),
         shopCart: {},
+        //龙的登录
         isLogin: false,
         allProductNum: Number
     },
     mutations: {
+        setUserToken(state, data) {
+            state.userToken = data
+            setItem("user-token", state.userToken)
+        },
 
-        changeNum(state,num){
+        changeNum(state, num) {
             state.allProductNum = num
         },
 
@@ -21,7 +30,7 @@ export default new Vuex.Store({
         },
         /**
          * 添加购物车
-         * @param state 
+         * @param state
          * @param id 商品id
          */
         addShopCart(state, id) {
@@ -34,15 +43,15 @@ export default new Vuex.Store({
         removeShopCart(state, id) {
             if (state.shopCart[id] === undefined) throw 'goods id undefined';
             if (state.shopCart[id] >= 1) state.shopCart[id] = state.shopCart[id] - 1;
- 
+
             let temp = JSON.parse(JSON.stringify(state.shopCart))
             Vue.set(state, 'shopCart', temp) //避免getters被computed调用时不刷新
         },
-        removeAllShopCart(state){
+        removeAllShopCart(state) {
             state.shopCart = {}
         },
 
-        changeLogin(){
+        changeLogin() {
             this.state.isLogin = !this.state.isLogin;
         }
     },

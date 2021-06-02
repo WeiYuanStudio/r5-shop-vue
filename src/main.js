@@ -8,16 +8,22 @@ import store from './store'
 /* Mint UI */
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
-import { Lazyload } from 'mint-ui'
+import {Lazyload} from 'mint-ui'
+
+/* Vant */
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
 /* fontfont-awesome */
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faShoppingCart, faList, faInfo, faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {faHome, faShoppingCart, faList, faInfo, faPlusCircle, faMinusCircle} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
 /* Use Vue */
+Vue.use(Vant)
 Vue.use(MintUI)
 Vue.use(Lazyload)
+
 
 /* import font-awesome lib */
 library.add(faHome)

@@ -11,19 +11,23 @@ import OrderDetails from '@/pages/OrderDetails.vue'
 import Controller from "@/back/Controller";
 import COrderDetails from "@/back/COrderDetails";
 import EditProduct from "@/back/EditProduct";
+import Login from "../pages/Login";
+import Register from "../pages/Register"
 
 Vue.use(Router)
 
 export default new Router({
     routes: [
-        { path: '/home', component: PageHome },
-        { path: '/cart', component: PageCart },
-        { path: '/order', component: PageOrder },
-        { path: '/about', component: PageAbout },
-        { path: '/form', component: FormOrder },
-        { path: '/details', component: OrderDetails },
-        { path: '/controller', component: Controller},
+        {path: '/home', component: PageHome},
+        {path: '/cart', component: PageCart},
+        {path: '/order', component: PageOrder},
+        {path: '/about', component: PageAbout},
+        {path: '/form', component: FormOrder},
+        {path: '/details', component: OrderDetails},
+        {path: '/controller', component: Controller},
         {path: '/controller/order/details', component: COrderDetails},
-        {path: '/controller/editProduct', component: EditProduct}
+        {path: '/controller/editProduct', component: EditProduct},
+        {path: '/login', component: Login},
+        {path: '/register', component: Register}
     ]
 })
