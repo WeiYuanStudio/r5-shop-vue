@@ -37,9 +37,9 @@ export default {
   mounted() {
     Indicator.open("店小二正在拼命加载商品...");
     axios
-      .get("/api/goods")
+      .get("/api/products")
       .then((resp) => {
-        this.goodList = resp.data;
+        this.goodList = resp.data.results;
       })
       .catch(() => {
         Toast({

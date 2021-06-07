@@ -1,30 +1,30 @@
 <template>
   <div class="good-info">
     <div class="good-info-left">
-      <img class="goods-img" v-lazy="img" />
+      <img class="goods-img" v-lazy="image" />
       <!-- Todo:设定备用图案 -->
     </div>
     <!---->
     <div class="good-info-right">
       <div class="good-info-right-up">
         <div class="good-name">{{name}}</div>
-        <div class="good-remark">{{remark}}</div>
+        <!-- <div class="good-remark">{{remark}}</div> -->
       </div>
       <div class="good-info-right-down">
         <div class="good-info-right-down-info">
           <div class="good-price">￥{{price}}</div>
           <div class="good-stock">库存{{stock}}</div>
         </div>
-        <div class="good-info-right-down-cart">
+        <!-- <div class="good-info-right-down-cart"> -->
           <!-- <div class="good-buy-num">购买数量：{{cartNum}}</div> -->
-          <div @click="addToCart($event)">
+          <!-- <div @click="addToCart($event)">
             <font-awesome-icon class="cart-modify-btn" icon="plus-circle" fixed-width />
           </div>
           <mt-badge size="normal" color="#C4C4C4">{{cartNum}}</mt-badge>
           <div @click="removeFromCart($event)">
             <font-awesome-icon :class="(cartNum !== 0) ? ['cart-modify-btn'] : ['cart-modify-btn-disable']" icon="minus-circle" fixed-width />
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -38,21 +38,21 @@ export default {
       ...this.goodInfo,
     };
   },
-  methods: {
-    addToCart(e) {
-      this.$emit("cart-ball", e);
+  // methods: {
+  //   addToCart(e) {
+  //     this.$emit("cart-ball", e);
 
-      this.$store.commit("addShopCart", this.id);
-    },
-    removeFromCart() {
-      this.$store.commit('removeShopCart', this.id);
-    }
-  },
-  computed: {
-    cartNum() {
-      return this.$store.getters.getCartNumById(this.id);
-    }
-  }
+  //     this.$store.commit("addShopCart", this.id);
+  //   },
+  //   removeFromCart() {
+  //     this.$store.commit('removeShopCart', this.id);
+  //   }
+  // },
+  // computed: {
+  //   cartNum() {
+  //     return this.$store.getters.getCartNumById(this.id);
+  //   }
+  // }
 };
 </script>
 
