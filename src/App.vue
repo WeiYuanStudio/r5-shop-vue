@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <!-- 在线状态头 -->
-    <Header id="header-bar" />
     <!--单页路由router-view-->
     <router-view id="main-view" />
     <!--NavBar 路由按钮-->
@@ -10,12 +8,10 @@
 </template>
 
 <script>
-import Header from "@/components/HeaderInfo.vue";
 import NavBar from "@/components/NavBar.vue";
 
 export default {
   components: {
-    Header,
     NavBar,
   },
   methods: {},
@@ -31,18 +27,8 @@ export default {
   color: #2c3e50;
 }
 
-#header-bar {
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 31;
-  width: 100%;
-}
-
 #main-view {
-  margin: 20.8px 0 54px 0;
+  margin: 0 0 54px 0;
 }
 
 #nav-bar {
