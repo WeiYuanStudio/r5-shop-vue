@@ -8,7 +8,7 @@
     <div class="good-info-right">
       <div class="good-info-right-up">
         <div class="good-name">{{name}}</div>
-        <div class="good-remark">{{remark}}</div>
+        <!-- <div class="good-remark">{{remark}}</div> -->
       </div>
       <div class="good-info-right-down">
         <div class="good-info-right-down-info">
@@ -17,7 +17,7 @@
         </div>
         <div class="good-info-right-down-cart">
           <!-- <div class="good-buy-num">购买数量：{{cartNum}}</div> -->
-          <div @click="addToCart($event)">
+           <div @click="addToCart($event)">
             <font-awesome-icon class="cart-modify-btn" icon="plus-circle" fixed-width />
           </div>
           <mt-badge size="normal" color="#C4C4C4">{{cartNum}}</mt-badge>
@@ -41,7 +41,6 @@ export default {
   methods: {
     addToCart(e) {
       this.$emit("cart-ball", e);
-
       this.$store.commit("addShopCart", this.id);
     },
     removeFromCart() {
