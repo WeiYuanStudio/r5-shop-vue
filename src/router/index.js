@@ -14,6 +14,7 @@ import EditProduct from "@/back/EditProduct";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register"
 import PageAnnouncement from "@/pages/PageAnnouncement";
+import PageAddressForm from "@/pages/PageAddressForm";
 
 Vue.use(Router)
 
@@ -31,5 +32,6 @@ export default new Router({
         {path: '/login', component: Login},
         {path: '/register', component: Register},
         {path: '/announcement', component: PageAnnouncement},
+        {path: '/address-form', component: PageAddressForm}
     ]
 })

@@ -70,8 +70,11 @@
     </van-grid>
 
     <van-cell-group :border="true">
-      <!-- <van-cell title="消息通知" is-link /> -->
       <van-cell title="公告中心" is-link @click="$router.push('/announcement')" />
+    </van-cell-group>
+
+    <van-cell-group :border="true">
+      <van-cell title="地址管理" is-link @click="$router.push('/address-form')" />
     </van-cell-group>
 
     <van-cell-group v-if="$store.state.user">
