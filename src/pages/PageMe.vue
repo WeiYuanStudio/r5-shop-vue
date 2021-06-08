@@ -1,7 +1,7 @@
 <template>
   <div class="my-container">
     <!-- 已登录：用户信息 -->
-    <div class="user-info-wrap" v-if="$store.state.user">
+    <div class="user-info-wrap" v-if="$store.getters.isLogin">
       <div class="base-info-wrap">
         <div class="avatar-title-wrap" @click="$router.push({
           name: 'user',
@@ -10,45 +10,32 @@
           }
         })">
           <van-image
-            class="avatar"
-            round
-            fit="cover"
-            :src="user.photo"
+              class="avatar"
+              round
+              fit="cover"
+              src=""
           />
-          <div class="title">{{ user.name }}</div>
+          <div class="title">欢迎回来，{{ user.username }}</div>
         </div>
         <van-button
-          round
-          size="mini"
-          @click="$router.push('/user/profile')"
-        >编辑资料</van-button>
+            round
+            size="mini"
+            @click="$router.push('/user/profile')"
+        >编辑资料
+        </van-button>
       </div>
-      <van-grid class="data-info" :border="false">
-        <van-grid-item>
-          <span class="count">{{ user.art_count }}</span>
-          <span class="text">头条</span>
-        </van-grid-item>
-        <van-grid-item :to="`/user/${user.id}/follow`">
-          <span class="count">{{ user.follow_count }}</span>
-          <span class="text">关注</span>
-        </van-grid-item>
-        <van-grid-item :to="`/user/${user.id}/follow?tab=followers`">
-          <span class="count">{{ user.fans_count }}</span>
-          <span class="text">粉丝</span>
-        </van-grid-item>
-        <van-grid-item>
-          <span class="count">{{ user.like_count }}</span>
-          <span class="text">获赞</span>
-        </van-grid-item>
-      </van-grid>
+      <div>
+        <div>邮箱: {{ user.email }}</div>
+        <div>注册时间: {{ new Date(user.date_joined).toLocaleDateString() }}</div>
+      </div>
     </div>
     <!-- /已登录：用户信息 -->
 
     <!-- 未登录 -->
     <div class="not-login" v-else>
       <div
-        class="mobile"
-        @click="$router.push('/login')"
+          class="mobile"
+          @click="$router.push('/login')"
       ></div>
       <div class="text">点击登录</div>
     </div>
@@ -57,27 +44,24 @@
     <!-- 其它 -->
     <van-grid clickable :column-num="2">
       <van-grid-item text="收藏" to="/my-article/collect">
-        <van-icon slot="icon" name="star-o" color="#eb5253" />
+        <van-icon slot="icon" name="star-o" color="#eb5253"/>
       </van-grid-item>
       <van-grid-item text="历史" to="/my-article/history">
-        <van-icon slot="icon" name="browsing-history-o" color="#ffa023" />
+        <van-icon slot="icon" name="browsing-history-o" color="#ffa023"/>
       </van-grid-item>
     </van-grid>
 
     <van-cell-group :border="true">
-      <van-cell title="公告中心" is-link @click="$router.push('/announcement')" />
+      <van-cell title="公告中心" is-link @click="$router.push('/announcement')"/>
+      <van-cell title="地址管理" is-link @click="$router.push('/address-form')" v-if="$store.getters.isLogin"/>
     </van-cell-group>
 
-    <van-cell-group :border="true">
-      <van-cell title="地址管理" is-link @click="$router.push('/address-form')" />
-    </van-cell-group>
-
-    <van-cell-group v-if="$store.state.user">
+    <van-cell-group v-if="$store.getters.isLogin">
       <van-cell
-        style="text-align: center;"
-        title="退出登录"
-        clickable
-        @click="onLogout"
+          style="text-align: center;"
+          title="退出登录"
+          clickable
+          @click="onLogout"
       />
     </van-cell-group>
     <!-- /其它 -->
@@ -85,80 +69,82 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: 'MyPage',
-  data () {
+  data() {
     return {
-      user: {} // 用户信息对象
+      user: {}
     }
   },
-  created () {
-    if (this.$store.state.user) {
+  created() {
+    if (this.$store.getters.isLogin) {
       this.loadUser()
     }
   },
-  activated () {
-    if (this.$store.state.user) {
+  activated() {
+    if (this.$store.getters.isLogin) {
       this.loadUser()
     }
   },
   methods: {
-    onLogout () {
-      // Dialog 组件既可以在模板中使用
-      // 也可以通过 JavaScript 来调用
-      // 模板中使用 van-dialog
-      // JavaScript 调用：this.$dialog
+    onLogout() {
       this.$dialog.confirm({
         title: '退户确认',
-        message: '退出当前头条账号，将不能同步收藏，发布评论和云端分享等'
+        message: '退出当前账号'
       }).then(() => {
-        // 确认执行这里
-        // 清除容器和本地存储的数据
-        this.$store.commit('setUser', null)
-      }).catch(() => {
-        // 取消执行这里
+        this.$store.commit('setUserToken', "")
       })
     },
-    async loadUser () {
+    async loadUser() {
+      axios.get("/api/users/get_self_user_info/").then(resp => {
+        this.user = resp.data
+      })
     }
-  }
+  },
 }
 </script>
 
 <style lang="less" scoped>
 .my-container {
   .user-info-wrap {
-    background: #AAA;
+    background: rgba(57, 197, 187, 0.3);
     height: 182px;
     box-sizing: border-box;
     background-size: cover;
     padding: 40px 20px;
     font-size: 15px;
-    color: #aaa;
+    color: #000;
+
     .base-info-wrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       .avatar-title-wrap {
         display: flex;
         align-items: center;
+
         .avatar {
           margin-right: 15px;
           width: 66px;
           height: 66px;
           padding: 2px;
-          background: #AAA;
+          background: rgba(57, 197, 187, 0.3);
         }
       }
     }
+
     .data-info {
       ::v-deep .van-grid-item__content {
         background: none;
       }
     }
   }
+
   .not-login {
-    background: #aaa;
+    background: rgba(57, 197, 187, 0.3);
     height: 182px;
     box-sizing: border-box;
     background-size: cover;
@@ -166,18 +152,21 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
     .mobile {
-      background: #AAA;
+      background: rgba(57, 197, 187, 0.3);
       background-size: cover;
       width: 66px;
       height: 66px;
       margin-bottom: 10px;
     }
+
     .text {
       font-size: 14px;
-      color: #FFF;
+      color: #000;
     }
   }
+
   > .van-cell-group {
     margin-top: 10px;
   }

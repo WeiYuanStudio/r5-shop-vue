@@ -10,8 +10,6 @@ export default new Vuex.Store({
         // //榜的登录
         userToken: getItem("user-token"),
         shopCart: {},
-        //龙的登录
-        isLogin: false,
         allProductNum: Number
     },
     mutations: {
@@ -50,10 +48,6 @@ export default new Vuex.Store({
         removeAllShopCart(state) {
             state.shopCart = {}
         },
-
-        changeLogin() {
-            this.state.isLogin = !this.state.isLogin;
-        }
     },
     getters: {
         /* 通过id获取某商品的购物车数量 */
@@ -73,6 +67,9 @@ export default new Vuex.Store({
         },
         getCartMap: state => {
             return state.shopCart;
+        },
+        isLogin: (state) => {
+            return state.userToken.length !== 0
         }
     }
 });

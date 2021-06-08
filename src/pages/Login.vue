@@ -88,13 +88,14 @@ export default {
           Toast({message: "登录超时", position: "top"})
         }
       }, 3000)
-      axios.post("/api-token-auth/", this.user).then(
-          resp => {
-            Toast.success("登陆成功")
-            axios.defaults.headers.common['Authorization'] = `Token ${resp.data.token}` 
-            this.$store.commit('setUserToken',resp.data.token)
-          }
-      ).catch(error => {
+      axios.post("/api-token-auth/", this.user).then(resp => {
+        Toast.success("登陆成功")
+
+        axios.defaults.headers.common['Authorization'] = `Token ${resp.data.token}`
+        this.$store.commit('setUserToken', resp.data.token)
+
+        this.$router.push("/me")
+      }).catch(error => {
         Toast.fail('登陆失败\n用户名或密码错误')
         console.log(error)
       }).finally(() => {

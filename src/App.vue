@@ -1,20 +1,26 @@
 <template>
   <div id="app">
     <!--单页路由router-view-->
-    <router-view id="main-view" />
+    <router-view id="main-view"/>
     <!--NavBar 路由按钮-->
-    <NavBar id="nav-bar" />
+    <NavBar id="nav-bar"/>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import NavBar from "@/components/NavBar.vue";
 
 export default {
   components: {
     NavBar,
   },
-  methods: {},
+  created() {
+    if (this.$store.getters.isLogin) {
+      const token = this.$store.state.userToken
+      axios.defaults.headers.common['Authorization'] = `Token ${token}`
+    }
+  }
 };
 </script>
 

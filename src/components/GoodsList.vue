@@ -38,7 +38,7 @@ export default {
   mounted() {
     Indicator.open("店小二正在拼命加载商品...");
     axios
-      .get("/api/products")
+      .get("/api/products/")
       .then((resp) => {
         this.productList = resp.data.results;
       })
