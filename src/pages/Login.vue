@@ -90,9 +90,9 @@ export default {
       }, 3000)
       axios.post("/api-token-auth/", this.user).then(
           resp => {
-            console.log(resp)
             Toast.success("登陆成功")
-            this.$store.commit('setUserToken',resp.data)
+            axios.defaults.headers.common['Authorization'] = `Token ${resp.data.token}` 
+            this.$store.commit('setUserToken',resp.data.token)
           }
       ).catch(error => {
         Toast.fail('登陆失败\n用户名或密码错误')
