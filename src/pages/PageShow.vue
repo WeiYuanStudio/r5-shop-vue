@@ -1,9 +1,43 @@
 <template>
   <div>
-      
+    <van-nav-bar
+      title="买家秀"
+    />
+    <div :key="index" v-for="(buyersShow, index) in buyersShowList">
+      <ItemBuyersShow :buyersShow="buyersShow" />
+    </div>
+    <div class="addbuyershow">
+      <van-button round type="primary" @click="$router.push('/addBuyerShow')" text="+"></van-button>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+import { Toast } from "vant";
+import ItemBuyersShow from "@/components/ItemBuyersShow.vue";
+
+export default {
+  components: { ItemBuyersShow },
+  data() {
+    return {
+      buyersShowList: [],
+    };
+  },
+  created() {
+    Toast.loading()
+    axios.get("/api/buyer-show/").then((resp) => {
+      this.buyersShowList = resp.data.results;
+      Toast.clear()
+    });
+  },
+};
 </script>
+
+<style>
+.addbuyershow{
+    position: fixed;
+    right: 10px;
+    bottom: 60px;
+}
+</style>
