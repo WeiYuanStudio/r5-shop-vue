@@ -64,7 +64,7 @@ export default {
   flex-flow: row;
   border-radius: 20px;
   background-color: #fff;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.1s ease-in;
 }
 
