@@ -18,6 +18,7 @@ import PageAddressForm from "@/pages/PageAddressForm";
 import PageShow from "@/pages/PageShow";
 import PageAddBuyerShow from "@/pages/PageAddBuyerShow";
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -26,7 +27,7 @@ export default new Router({
         {path: '/cart', component: PageCart},
         {path: '/order', component: PageOrder},
         {path: '/me', component: PageMe},
-        {path: '/form', component: FormOrder},
+        {path: '/formOrder', component: FormOrder},
         {path: '/details', component: OrderDetails},
         {path: '/controller', component: Controller},
         {path: '/controller/order/details', component: COrderDetails},
@@ -37,5 +38,6 @@ export default new Router({
         {path: '/address-form', component: PageAddressForm},
         {path: '/buyersShow', component: PageShow},
         {path: '/addBuyerShow', component: PageAddBuyerShow},
+
     ]
 })

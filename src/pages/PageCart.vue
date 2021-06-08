@@ -1,40 +1,58 @@
 <template>
   <div>
-    <CartGoodsList v-show="!isFinished" />
-    <BarPrice v-show="!isFinished" />
-    <button @click="buy" v-show="!isFinished">结算</button>
-    <FormOrder @finish="finish" v-show="isFinished"/>
+    <CartGoodsList  />
+
+    <van-submit-bar :price="total*100" button-text="提交订单" @submit="buy" />
   </div>
 </template>
 
 <script>
 import CartGoodsList from "@/components/CartGoodsList.vue";
-import BarPrice from "@/components/BarPrice.vue";
-import FormOrder from "@/pages/FormOrder";
+
+import axios from "axios";
 
 export default {
   components: {
     CartGoodsList,
-    BarPrice,
-    FormOrder
   },
   data() {
     return {
-      isFinished: false,
+      total: null,
     };
   },
   methods:{
     buy(){
-      this.isFinished = true
+      if(this.total !== 0){
+        this.$router.push("/formOrder")
+      }
     },
-    finish(){
-      this.isFinished = false
-      this.$store.commit("removeAllShopCart")
-      this.$router.push("/order")
-    }
-  }
+  },
+  mounted() {
+    axios
+        .get("/api/products")
+        .then((resp) => {
+          this.total = 0;
+          let goodsList = resp.data.results;
+          let cart = this.$store.state.shopCart;
+          for (let k in cart) {
+            console.log(k);
+            console.log(cart[k]);
+            let itemPrice = -1;
+            goodsList.forEach((i) => {
+              console.log(i);
+              if (i.id == k) itemPrice = i.price;
+            });
+            this.total += itemPrice * cart[k];
+          }
+        })
+        .catch(() => {})
+        .finally(() => {});
+  },
 };
 </script>
 
 <style scoped>
+.van-submit-bar{
+  bottom: 50px;
+}
 </style>
