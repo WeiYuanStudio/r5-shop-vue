@@ -1,9 +1,9 @@
 <template>
-  <div class="address-card">
+  <div class="address-card" @click="chooseAddr">
     <div class="address-card-left">
       <div class="left-top">
         <div class="user-name">{{name}}</div>
-        <div class="user-phone">{{phone}}</div>
+        <div class="user-phone">{{tel}}</div>
       </div>
       <div class="left-bottom-address">{{address}}</div>
     </div>
@@ -20,8 +20,18 @@ export default {
   data() {
     return {
       name:"neru",
-      phone:"111111111",
-      address:"aaaaaaaaa"
+      tel:"111111111",
+      address:"aaaaaaaaa",
+    }
+  },
+  mounted() {
+    this.name = this.$store.getters.getAddress.name
+    this.tel = this.$store.getters.getAddress.tel
+    this.address = this.$store.getters.getAddress.address
+  },
+  methods: {
+    chooseAddr(){
+      this.$router.push("/chooseAddress")
     }
   }
 }

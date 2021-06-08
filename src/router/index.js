@@ -17,7 +17,7 @@ import PageAnnouncement from "@/pages/PageAnnouncement";
 import PageAddressForm from "@/pages/PageAddressForm";
 import PageShow from "@/pages/PageShow";
 import PageAddBuyerShow from "@/pages/PageAddBuyerShow";
-
+import ChooseAddress from "@/pages/ChooseAddress";
 
 Vue.use(Router)
 
@@ -38,6 +38,6 @@ export default new Router({
         {path: '/address-form', component: PageAddressForm},
         {path: '/buyersShow', component: PageShow},
         {path: '/addBuyerShow', component: PageAddBuyerShow},
-
+        {path: '/chooseAddress', component: ChooseAddress},
     ]
 })

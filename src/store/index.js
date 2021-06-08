@@ -10,9 +10,14 @@ export default new Vuex.Store({
         // //榜的登录
         userToken: getItem("user-token") ? getItem("user-token") : "",
         shopCart: {},
-        allProductNum: Number
+        allProductNum: Number,
+        selectedAddress: null,
+        total: 0
     },
     mutations: {
+        setTotal(state, data){
+          state.total =  data
+        },
         setUserToken(state, data) {
             state.userToken = data
             setItem("user-token", state.userToken)
@@ -48,8 +53,14 @@ export default new Vuex.Store({
         removeAllShopCart(state) {
             state.shopCart = {}
         },
+        setAddress(state, data) {
+            state.selectedAddress = data
+        }
     },
     getters: {
+        getTotal(state){
+            return state.total
+        },
         /* 通过id获取某商品的购物车数量 */
         getCartNumById: (state) => (id) => {
             console.log(state.shopCart)
@@ -70,6 +81,15 @@ export default new Vuex.Store({
         },
         isLogin: (state) => {
             return state.userToken.length !== 0
-        }
+        },
+        getAddress(state) {
+            if (state.selectedAddress === null) {
+                return {
+                    name: "未选择地址"
+                }
+            } else {
+                return state.selectedAddress
+            }
+        },
     }
 });

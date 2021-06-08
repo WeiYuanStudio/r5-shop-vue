@@ -24,6 +24,7 @@ export default {
     buy(){
       if(this.total !== 0){
         this.$router.push("/formOrder")
+        this.$store.state.total = this.total
       }
     },
   },

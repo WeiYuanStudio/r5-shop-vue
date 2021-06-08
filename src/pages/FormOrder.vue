@@ -4,9 +4,9 @@
 <!--   地址信息   -->
 <AddressCard/>
 <!--   购物车列表   -->
-
+<CartGoodsList/>
 <!--   提交订单   -->
-      <van-submit-bar :price="total*100" button-text="提交订单" @submit="submit" />
+      <van-submit-bar :price="this.$store.getters.getTotal*100" button-text="提交订单" @submit="submit" />
     </div>
   </div>
 </template>
@@ -15,9 +15,10 @@
 // import axios from "axios";
 // import {Toast} from "mint-ui";
 import AddressCard from "../components/AddressCard";
+import CartGoodsList from "@/components/CartGoodsList";
 
 export default {
-  components: {AddressCard},
+  components: {CartGoodsList, AddressCard},
   data() {
     return {
       name: "",
