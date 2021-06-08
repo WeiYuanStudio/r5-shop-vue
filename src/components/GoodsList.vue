@@ -2,7 +2,7 @@
   <div>
     <div class="page-good-list">
       <div v-for="(good, index) in productList" :key="index">
-        <ItemGood :goodInfo="good" v-on:cart-ball="onCartBall($event)" />
+        <ItemGood  v-if="good.name.includes(productsNameKey)" :goodInfo="good" v-on:cart-ball="onCartBall($event)" />
       </div>
       <div class="ball-wrap">
         <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
@@ -24,6 +24,7 @@ import ItemGood from "@/components/ItemGood.vue";
 import axios from "axios";
 
 export default {
+  props: ['productsNameKey'],
   components: { ItemGood },
   data() {
     return {
