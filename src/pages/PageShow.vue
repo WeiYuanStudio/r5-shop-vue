@@ -7,7 +7,8 @@
       <ItemBuyersShow :buyersShow="buyersShow" />
     </div>
     <div class="addbuyershow">
-      <van-button round type="primary" @click="$router.push('/addBuyerShow')" text="+"></van-button>
+      <!--van-button round type="primary" @click="$router.push('/addBuyerShow')" icon="plus"></van-button-->
+      <van-icon name="add" color="#1989fa" size="40" @click="$router.push('/addBuyerShow')" />
     </div>
   </div>
 </template>
