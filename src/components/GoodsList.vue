@@ -1,9 +1,16 @@
 <template>
   <div>
     <div class="page-good-list">
-      <div v-for="(good, index) in productList" :key="index">
-        <ItemGood  v-if="good.name.includes(productsNameKey)" :goodInfo="good" v-on:cart-ball="onCartBall($event)" />
+      <div v-if="productList.length>0">
+        <div v-for="(good, index) in productList" :key="index">
+          <ItemGood  v-if="good.name.includes(productsNameKey)" :goodInfo="good" v-on:cart-ball="onCartBall($event)" />
+        </div>
       </div>
+      <div v-else>
+        <van-empty description="暂无数据">
+        </van-empty>
+      </div>
+
       <div class="ball-wrap">
         <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
           <div class="ball" v-show="ball.show">
