@@ -7,7 +7,7 @@
     <!---->
     <div class="good-info-right">
       <div class="good-info-right-up">
-        <div class="good-name">{{name}}</div>
+        <div class="good-name">{{name}} <van-tag v-show="category!=null" type="primary">{{category==null?'':category.name}}</van-tag> </div>
         <!-- <div class="good-remark">{{remark}}</div> -->
       </div>
       <div class="good-info-right-down">
@@ -50,7 +50,7 @@ export default {
   computed: {
     cartNum() {
       return this.$store.getters.getCartNumById(this.id);
-    }
+    },
   }
 };
 </script>
