@@ -22,7 +22,7 @@ export default {
   },
   created() {
     Toast.loading()
-    axios.get("/api/users/" + this.customerUserId).then((resp) => {
+    axios.get(`/api/users/${this.customerUserId}/`).then((resp) => {
       this.customerUsername = resp.data.username;
       Toast.clear()
     });
