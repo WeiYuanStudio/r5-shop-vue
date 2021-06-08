@@ -3,7 +3,7 @@
     <!-- 导航栏 -->
     <van-nav-bar
         class="app-nav-bar"
-        title="Login"
+        title="登录"
         left-arrow
         @click-left="$router.back()"
     />
@@ -45,6 +45,15 @@
             block
         >登录
         </van-button>
+      </div>
+      <!-- 注册链接 -->
+      <div class="lint-register-wrap">
+        <a
+            class="lint-register"
+            v-on:click="toRegister"
+        >
+          还没注册？
+        </a>
       </div>
     </van-form>
   </div>
@@ -108,6 +117,10 @@ export default {
         Toast({message: error.errors[0].message, position: 'top'})
       }
     },
+
+    toRegister() {
+      this.$router.push("/register")
+    }
   }
 }
 </script>
@@ -123,4 +136,13 @@ export default {
   border: none;
 }
 
+.lint-register-wrap{
+  text-align: right;
+
+}
+.lint-register{
+  font-size: 15px;
+  color: #62b0ff;
+  padding:0 10px ;
+}
 </style>

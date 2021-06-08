@@ -3,7 +3,7 @@
     <!-- 导航栏 -->
     <van-nav-bar
         class="app-nav-bar"
-        title="Register"
+        title="注册"
         left-arrow
         @click-left="$router.back()"
     />
@@ -59,10 +59,10 @@
 </template>
 
 <script>
-
+import axios from "axios";
 
 export default {
-  name: 'LoginIndex',
+
   data() {
     return {
       user: {
@@ -89,6 +89,9 @@ export default {
   methods: {
 
     onRegister() {
+      axios.post("/api/users/",this.user).then( ()=> {
+        this.$router.push("/login")
+      })
     },
 
     onFailed() {
