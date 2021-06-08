@@ -8,7 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         // //榜的登录
-        userToken: getItem("user-token"),
+        userToken: getItem("user-token") ? getItem("user-token") : "",
         shopCart: {},
         allProductNum: Number
     },
