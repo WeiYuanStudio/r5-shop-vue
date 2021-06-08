@@ -48,12 +48,7 @@
     <div class="not-login" v-else>
       <div
         class="mobile"
-        @click="$router.push({
-          name: 'login',
-          query: {
-            redirect: '/my'
-          }
-        })"
+        @click="$router.push('/login')"
       ></div>
       <div class="text">点击登录</div>
     </div>
@@ -139,7 +134,7 @@ export default {
     background-size: cover;
     padding: 40px 20px;
     font-size: 15px;
-    color: #fff;
+    color: #aaa;
     .base-info-wrap {
       display: flex;
       justify-content: space-between;
@@ -163,7 +158,7 @@ export default {
     }
   }
   .not-login {
-    background: #FFF;
+    background: #aaa;
     height: 182px;
     box-sizing: border-box;
     background-size: cover;
@@ -180,7 +175,7 @@ export default {
     }
     .text {
       font-size: 14px;
-      color: #fff;
+      color: #FFF;
     }
   }
   > .van-cell-group {
