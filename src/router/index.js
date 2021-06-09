@@ -14,6 +14,7 @@ import EditProduct from "@/back/EditProduct";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register"
 import PageAnnouncement from "@/pages/PageAnnouncement";
+import PageAddressManage from "@/pages/PageAddressManage";
 import PageAddressForm from "@/pages/PageAddressForm";
 import PageShow from "@/pages/PageShow";
 import PageAddBuyerShow from "@/pages/PageAddBuyerShow";
@@ -36,6 +37,7 @@ export default new Router({
         {path: '/register', component: Register},
         {path: '/announcement', component: PageAnnouncement},
         {path: '/address-form', component: PageAddressForm},
+        {path: '/address-manage', component: PageAddressManage},
         {path: '/buyersShow', component: PageShow},
         {path: '/addBuyerShow', component: PageAddBuyerShow},
         {path: '/chooseAddress', component: ChooseAddress},

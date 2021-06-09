@@ -53,7 +53,7 @@
 
     <van-cell-group :border="true">
       <van-cell title="公告中心" is-link @click="$router.push('/announcement')"/>
-      <van-cell title="地址管理" is-link @click="$router.push('/address-form')" v-if="$store.getters.isLogin"/>
+      <van-cell title="地址管理" is-link @click="$router.push('/address-manage')" v-if="$store.getters.isLogin"/>
     </van-cell-group>
 
     <van-cell-group v-if="$store.getters.isLogin">
