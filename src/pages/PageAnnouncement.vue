@@ -6,8 +6,14 @@
       left-arrow
       @click-left="$router.back()"
     />
-    <div :key="index" v-for="(announcement, index) in announcementList">
-      <ItemAnnouncement :announcement="announcement" />
+    <div v-if="announcementList.length>0">
+      <div :key="index" v-for="(announcement, index) in announcementList">
+        <ItemAnnouncement :announcement="announcement" />
+      </div>
+    </div>
+    <div v-else>
+      <van-empty description="暂无数据">
+        </van-empty>
     </div>
   </div>
 </template>

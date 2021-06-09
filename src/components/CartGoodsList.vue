@@ -2,7 +2,7 @@
   <div>
     <div class="page-good-list">
         <div v-if="goodList.length ===0">
-            购物车空
+            <van-empty name="cart-o" description="购物车为空，去主页选择商品吧！"></van-empty>
         </div>
       <div v-for="(good, index) in goodList" :key="index">
         <ItemGood :goodInfo="good" v-on:cart-ball="onCartBall($event)" />
