@@ -125,9 +125,8 @@ export default {
   margin: 8px 4px;
   padding: 8px;
 
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #fff;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
   transition: all 0.1s ease-in;
 }
 </style>

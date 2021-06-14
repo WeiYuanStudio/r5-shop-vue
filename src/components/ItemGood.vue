@@ -66,9 +66,8 @@ export default {
   padding: 10px;
   display: flex;
   flex-flow: row;
-  border-radius: 20px;
+  border-radius: 8px;
   background-color: #fff;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.1s ease-in;
 }
 

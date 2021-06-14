@@ -36,9 +36,8 @@ export default {
   margin: 8px 4px;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #fff;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
   transition: all 0.1s ease-in;
 }
 
