@@ -120,8 +120,4 @@ export default {
     }
   }
 }
-
-.page-good-list {
-  margin: 34px 0 0 0;
-}
 </style>
