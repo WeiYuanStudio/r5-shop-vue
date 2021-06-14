@@ -23,7 +23,7 @@ export default {
   methods:{
     buy(){
       if(this.total !== 0){
-        this.$router.push("/formOrder")
+        this.$router.push("/form-order")
         this.$store.state.total = this.total
       }
     },

@@ -28,7 +28,7 @@ export default new Router({
         {path: '/cart', component: PageCart},
         {path: '/order', component: PageOrder},
         {path: '/me', component: PageMe},
-        {path: '/formOrder', component: FormOrder},
+        {path: '/form-order', component: FormOrder},
         {path: '/details', component: OrderDetails},
         {path: '/controller', component: Controller},
         {path: '/controller/order/details', component: COrderDetails},

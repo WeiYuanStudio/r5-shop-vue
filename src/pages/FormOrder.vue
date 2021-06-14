@@ -1,12 +1,23 @@
 <template>
   <div>
+    <van-nav-bar
+        title="标题"
+        left-text="返回"
+        left-arrow
+        @click-left="$router.back()"
+    />
+
     <div class="order-form">
-<!--   地址信息   -->
-<AddressCard/>
-<!--   购物车列表   -->
-<CartGoodsList/>
-<!--   提交订单   -->
-      <van-submit-bar :price="this.$store.getters.getTotal*100" button-text="提交订单" @submit="submit" />
+      <!--   地址信息   -->
+      <AddressCard/>
+      <!--   购物车列表   -->
+      <CartGoodsList/>
+      <!--   提交订单   -->
+      <van-submit-bar
+          :price="this.$store.getters.getTotal * 100"
+          button-text="提交订单"
+          @submit="submit"
+      />
     </div>
   </div>
 </template>
@@ -61,5 +72,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>
