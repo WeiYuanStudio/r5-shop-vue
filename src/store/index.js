@@ -4,15 +4,14 @@ import {getItem, setItem} from '@/utils/storage'
 
 Vue.use(Vuex);
 
-
 export default new Vuex.Store({
     state: {
-        // //榜的登录
         userToken: getItem("user-token") ? getItem("user-token") : "",
         shopCart: {},
         allProductNum: Number,
+        total: 0,
+        selectedAddressId: null,
         selectedAddress: null,
-        total: 0
     },
     mutations: {
         setTotal(state, data){

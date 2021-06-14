@@ -5,6 +5,7 @@
         :list="addressList"
         @add="$router.push('/address-form')"
         @edit="onEdit"
+        @select="onSelect"
     />
   </div>
 </template>
@@ -31,6 +32,9 @@ export default {
           id: e.id
         }
       })
+    },
+    onSelect(e) {
+      this.$store.commit("setAddress", e)
     }
   },
   created() {
