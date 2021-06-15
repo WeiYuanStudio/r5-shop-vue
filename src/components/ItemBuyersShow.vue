@@ -1,6 +1,11 @@
 <template>
   <div class="card">
-    <div class="buyersShow-title">{{ buyersShow.title }}</div>
+    <div class="buyersShow-title">
+      <div>{{ buyersShow.title }}</div>
+      <div v-if="deletable" class="cross-btn">
+        <van-button icon="cross" type="danger" size="mini" @click="onDelete()"/>
+      </div>
+    </div>
     <div>来自：<span class="buyers-username">{{ customerUsername }}</span></div>
     <div class="content" v-html="content"></div>
   </div>
@@ -12,7 +17,7 @@ import {Toast} from "vant";
 import Showdown from "showdown";
 
 export default {
-  props: ["buyersShow"],
+  props: ["deletable", "buyersShow"],
   data() {
     return {
       customerUserId: this.buyersShow.customer,
@@ -20,7 +25,15 @@ export default {
       content: null
     };
   },
-  methods: {},
+  methods: {
+   onDelete() {
+     const id = this.buyersShow.id
+     axios.delete(`/api/buyer-show/${id}/`).then(() => {
+        Toast.success("删除成功")
+       this.$emit('refresh')
+     })
+   }
+  },
   created() {
     const converter = new Showdown.Converter()
     this.content = converter.makeHtml(this.buyersShow.content)
@@ -40,7 +53,8 @@ export default {
   padding: 20px 30px;
   display: flex;
   flex-flow: column;
-  text-align: left;  border-radius: 8px;
+  text-align: left;
+  border-radius: 8px;
   background-color: #fff;
   transition: all 0.1s ease-in;
 }
@@ -48,7 +62,11 @@ export default {
 .buyersShow-title {
   font-weight: bolder;
   font-size: 1.6em;
+  display: flex;
+  flex-flow: row ;
+  justify-content: space-between;
 }
+
 
 .buyers-username {
   color: #6495ED

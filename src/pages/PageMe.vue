@@ -24,7 +24,7 @@
         >编辑资料
         </van-button>
       </div>
-      <div>
+      <div id="profile">
         <div>邮箱: {{ user.email }}</div>
         <div>注册时间: {{ new Date(user.date_joined).toLocaleDateString() }}</div>
       </div>
@@ -107,6 +107,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#profile {
+  margin: 10px 80px;
+}
+
 .my-container {
   .user-info-wrap {
     background: rgba(57, 197, 187, 0.3);

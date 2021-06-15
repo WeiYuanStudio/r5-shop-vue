@@ -2,12 +2,12 @@
   <div>
     <van-nav-bar
       title="买家秀"
-      right-text="我的秀"
+      :right-text=rightText
       @click-right="$router.push('/myShow')"
     />
     <div v-if="buyersShowList.length>0">
       <div :key="index" v-for="(buyersShow, index) in buyersShowList">
-        <ItemBuyersShow :buyersShow="buyersShow" />
+        <ItemBuyersShow :buyersShow="buyersShow"  />
       </div>
     </div>
     <div v-else>
@@ -32,9 +32,13 @@ export default {
   data() {
     return {
       buyersShowList: [],
+      rightText: null,
     };
   },
   created() {
+    if (this.$store.getters.isLogin) {
+      this.rightText = "我的秀"
+    }
     Toast.loading()
     axios.get("/api/buyer-show/").then((resp) => {
       this.buyersShowList = resp.data.results;
