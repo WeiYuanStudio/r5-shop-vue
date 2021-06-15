@@ -8,7 +8,6 @@ export default new Vuex.Store({
     state: {
         userToken: getItem("user-token") ? getItem("user-token") : "",
         shopCart: {},
-        allProductNum: Number,
         total: 0,
         selectedAddressId: null,
         selectedAddress: null,
@@ -20,10 +19,6 @@ export default new Vuex.Store({
         setUserToken(state, data) {
             state.userToken = data
             setItem("user-token", state.userToken)
-        },
-
-        changeNum(state, num) {
-            state.allProductNum = num
         },
 
         /* 清空购物车 */
