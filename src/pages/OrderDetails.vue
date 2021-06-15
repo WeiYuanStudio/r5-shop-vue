@@ -20,6 +20,7 @@
         <div v-for="(item, i) in orderToDetail" :key="i">
           <DetailsGoods :goodsInfo="item"/>
         </div>
+        <div class="sum">总价: ￥{{goodsList.price}}</div>
       </div>
       <div class="order-details-user">
         <div class="order-details-user-name">昵称: {{ goodsList.customer_name }}</div>
@@ -40,7 +41,6 @@
 </template>
 
 <script>
-// import axios from "axios";
 import DetailsGoods from "@/components/DetailsGoods.vue";
 import axios from "axios";
 
@@ -88,7 +88,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .order-details-page {
   padding: 5px 0;
@@ -105,5 +104,12 @@ export default {
   border-radius: 8px;
   background-color: #fff;
   transition: all 0.1s ease-in;
+}
+
+.sum {
+  text-align: right;
+  color: rgb(228, 0, 0);
+  font-weight: bolder;
+  font-size: 1.6em;
 }
 </style>

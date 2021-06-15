@@ -7,7 +7,7 @@
     <div class="good-info-right">
       <div class="good-info-right-up">
         <div class="good-name">{{name}}</div>
-        <div class="good-price">￥{{price}}</div>
+        <div class="price">￥{{price}}</div>
       </div>
       <div class="good-info-right-down">数量  {{num}}</div>
     </div>
@@ -56,5 +56,11 @@ export default {
   height: 120px;
   border: solid 1px white;
   border-radius: 15px;
+}
+
+.price {
+  color: rgb(228, 0, 0);
+  font-size: 1.5em;
+  font-weight: normal;
 }
 </style>
