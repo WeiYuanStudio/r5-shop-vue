@@ -19,6 +19,7 @@ import PageAddressForm from "@/pages/PageAddressForm";
 import PageShow from "@/pages/PageShow";
 import PageAddBuyerShow from "@/pages/PageAddBuyerShow";
 import ChooseAddress from "@/pages/ChooseAddress";
+import Myshow from "../pages/Myshow";
 
 Vue.use(Router)
 
@@ -41,5 +42,6 @@ export default new Router({
         {path: '/buyersShow', component: PageShow},
         {path: '/addBuyerShow', component: PageAddBuyerShow},
         {path: '/chooseAddress', component: ChooseAddress},
+        {path: '/myShow', component: Myshow}
     ]
 })
