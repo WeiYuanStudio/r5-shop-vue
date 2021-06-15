@@ -9,10 +9,12 @@
         <div class="order-mode">{{ beautyState(state) }}</div>
       </div>
       <div class="order-row-2">
-        <div class="order-good">{{ good }}</div>
+        <div class="order-good">{{ orderStringList }}</div>
       </div>
       <div class="order-row-3">
-        <div class="order-time">下单时间：{{ new Date(submit_datetime).toLocaleString() }}</div>
+        <div class="order-time">
+          下单时间：{{ new Date(submit_datetime).toLocaleString() }}
+        </div>
         <div class="order-price">￥{{ price }}</div>
       </div>
     </div>
@@ -20,11 +22,15 @@
 </template>
 
 <script>
+import axios from "axios"
+
 export default {
   props: ["orderInfo"],
   data() {
     return {
       ...this.orderInfo,
+      orderExtend: [],
+      orderStringList: ''
     };
   },
   methods: {
@@ -38,6 +44,18 @@ export default {
 
       return e[state]
     }
+  },
+  created() {
+    axios.get("/api/order-extend/", {params: {order: this.id}}).then(resp => {
+      this.orderExtend = resp.data.results
+    }).then(() => {
+      this.orderExtend.forEach(item => {
+        console.log(item)
+        axios.get(`/api/products/${item.id}`).then(resp => {
+          this.orderStringList += resp.data.name + `x${item.count}` + '、'
+        })
+      })
+    })
   }
 }
 </script>
