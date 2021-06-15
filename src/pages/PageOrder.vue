@@ -1,19 +1,18 @@
 <template>
   <div>
-    <div>PAGEORDER</div>
-    <PageOrderList />
-    <Notice />
+    <van-nav-bar
+        title="订单"
+    />
+    <PageOrderList/>
   </div>
 </template>
 
 <script>
 import PageOrderList from "@/components/PageOrderList.vue";
-import Notice from "@/components/Notice.vue";
 
 export default {
   components: {
     PageOrderList,
-    Notice,
   },
   data() {
     return {};

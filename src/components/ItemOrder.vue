@@ -3,18 +3,17 @@
     <div class="order-info">
       <div class="order-row-1">
         <div class="order-number-mode">
-          <div class="order-number">{{number}}</div>
-          <div class="order-mode">{{mode}}</div>
+          <div class="order-number">ID: {{ id }}</div>
         </div>
 
-        <div class="order-state">{{state}}</div>
+        <div class="order-mode">{{ beautyState(state) }}</div>
       </div>
       <div class="order-row-2">
-        <div class="order-good">{{good}}</div>
+        <div class="order-good">{{ good }}</div>
       </div>
       <div class="order-row-3">
-        <div class="order-time">下单时间：{{time}}</div>
-        <div class="order-price">￥{{price}}</div>
+        <div class="order-time">下单时间：{{ new Date(submit_datetime).toLocaleString() }}</div>
+        <div class="order-price">￥{{ price }}</div>
       </div>
     </div>
   </div>
@@ -28,7 +27,19 @@ export default {
       ...this.orderInfo,
     };
   },
-};
+  methods: {
+    beautyState(state) {
+      const e = {
+        'c': "已创建",
+        'p': "已支付",
+        'd': "配送中",
+        'f': "已完成",
+      }
+
+      return e[state]
+    }
+  }
+}
 </script>
 
 <style scoped>
