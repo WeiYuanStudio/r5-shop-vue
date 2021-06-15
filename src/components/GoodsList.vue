@@ -1,15 +1,23 @@
 <template>
   <div>
     <div class="page-good-list">
-      <div v-if="productList.length>0">
-        <div v-for="(good, index) in productList" :key="index">
-          <ItemGood  v-if="good.name.includes(productsNameKey)" :goodInfo="good" v-on:cart-ball="onCartBall($event)" />
-        </div>
-      </div>
-      <div v-else>
-        <van-empty description="暂无数据">
-        </van-empty>
-      </div>
+      <van-tree-select height="80vh" :items="items" :main-active-index.sync="active">
+        <template #content>
+
+          <div v-if="productList.length>0">
+            <div v-for="(good, index) in productList" :key="index">
+              <ItemGood v-if="good.name.includes(productsNameKey)"  :goodInfo="good" v-on:cart-ball="onCartBall($event)"/>
+
+            </div>
+          </div>
+          <div v-else>
+            <van-empty description="暂无数据">
+            </van-empty>
+          </div>
+
+        </template>
+      </van-tree-select>
+
 
       <div class="ball-wrap">
         <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
@@ -40,6 +48,8 @@ export default {
         el: null,
       },
       productList: [],
+      active: 0,
+      items: [{ text: '分组 1' }, { text: '分组 2' }],
     };
   },
   mounted() {
