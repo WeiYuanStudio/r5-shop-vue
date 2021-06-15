@@ -1,7 +1,7 @@
 <template>
   <div class="good-info">
     <div class="good-info-left">
-      <img class="goods-img" v-lazy="img" />
+      <van-image class="goods-img" :src="img" />
     </div>
     <!---->
     <div class="good-info-right">

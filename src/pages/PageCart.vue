@@ -1,5 +1,8 @@
 <template>
   <div>
+    <van-nav-bar
+        title="购物车"
+    />
     <CartGoodsList  />
 
     <van-submit-bar :price="total*100" button-text="提交订单" @submit="buy" />

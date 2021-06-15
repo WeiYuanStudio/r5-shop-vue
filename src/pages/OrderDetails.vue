@@ -1,10 +1,10 @@
 <template>
   <div>
     <van-nav-bar
-      title="订单详情"
-      left-text="返回"
-      left-arrow
-      @click-left="$router.back()"
+        title="订单详情"
+        left-text="返回"
+        left-arrow
+        @click-left="$router.back()"
     />
     <div class="order-details-page">
       <div class="order-details-state">
@@ -18,7 +18,7 @@
       <div class="order-details-goods">
         商品
         <div v-for="(item, i) in orderToDetail" :key="i">
-          <DetailsGoods :goodsInfo="item" />
+          <DetailsGoods :goodsInfo="item"/>
         </div>
       </div>
       <div class="order-details-user">
@@ -32,7 +32,7 @@
           支付方式: 到付
         </div>
         <div class="order-details-order-time">
-          下单时间: {{ goodsList.submit_datetime }}
+          下单时间: {{ new Date(goodsList.submit_datetime).toLocaleString() }}
         </div>
       </div>
     </div>
@@ -53,28 +53,25 @@ export default {
       goodsList: [],
       active: 0,
       orderExtend: [],
-      orderStringList: '',
       orderToDetail: [],
     };
   },
   methods: {
     tranState(state) {
-      if (state === "c") return 0;
-      if (state === "p") return 1;
-      if (state === "d") return 2;
-      if (state === "f") return 3;
+      const map = {
+        "c": 0,
+        "p": 1,
+        "d": 2,
+        "f": 3
+      }
+
+      return map[state]
     },
   },
   mounted() {
     this.goodsList = this.$route.query.list;
     this.active = this.tranState(this.goodsList.state)
-    // let keys = Object.keys(this.goodsList.good);
-    // for (let i = 0; i < keys.length; i++) {
-    //   axios.get("/api/good/" + keys[i]).then((resp) => {
-    //     resp.data.num = this.goodsList.good[keys[i]];
-    //     this.goods.push(resp.data);
-    //   });
-    // }
+
     axios.get("/api/order-extend/", {params: {order: this.goodsList.id}}).then(resp => {
       this.orderExtend = resp.data.results
       this.orderToDetail = []
@@ -84,13 +81,6 @@ export default {
           name: item.product.name,
           price: item.product.price,
           num: item.count
-        })
-      })
-    }).then(() => {
-      this.orderExtend.forEach(item => {
-        console.log("long",item)
-        axios.get(`/api/products/${item.id}`).then(resp => {
-          this.orderStringList += resp.data.name + `x${item.count}` + '、'
         })
       })
     })
