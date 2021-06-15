@@ -48,12 +48,10 @@ export default {
   created() {
     axios.get("/api/order-extend/", {params: {order: this.id}}).then(resp => {
       this.orderExtend = resp.data.results
+      console.log(this.orderExtend)
     }).then(() => {
       this.orderExtend.forEach(item => {
-        console.log(item)
-        axios.get(`/api/products/${item.id}`).then(resp => {
-          this.orderStringList += resp.data.name + `x${item.count}` + '、'
-        })
+        this.orderStringList += `${item.product.name} x${item.count}` + '、'
       })
     })
   }
