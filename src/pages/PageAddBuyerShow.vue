@@ -51,6 +51,7 @@ export default {
       console.log(val)
       axios.post("/api/buyer-show/", val).then(() => {
         Toast.success("提交成功")
+        this.$router.push("/myShow")
       }).catch(() => {
         Toast.fail("提交失败")
       })

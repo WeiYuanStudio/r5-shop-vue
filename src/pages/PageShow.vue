@@ -2,6 +2,8 @@
   <div>
     <van-nav-bar
       title="买家秀"
+      right-text="我的秀"
+      @click-right="$router.push('/myShow')"
     />
     <div v-if="buyersShowList.length>0">
       <div :key="index" v-for="(buyersShow, index) in buyersShowList">
