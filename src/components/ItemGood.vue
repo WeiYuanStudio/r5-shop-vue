@@ -1,7 +1,7 @@
 <template>
   <div class="good-info">
     <div class="good-info-left">
-      <img class="goods-img" v-lazy="image" />
+      <van-image class="goods-img" :src="image" />
       <!-- Todo:设定备用图案 -->
     </div>
     <!---->
@@ -20,11 +20,11 @@
            <div @click="addToCart($event)">
             <font-awesome-icon :class="(cartNum<stock) ? ['cart-modify-btn'] : ['cart-modify-btn-disable']" icon="plus-circle" fixed-width />
           </div>
-          <mt-badge size="normal" color="#C4C4C4">{{cartNum}}</mt-badge>
+          <div class="cart-num" size="normal" color="#C4C4C4">{{cartNum}}</div>
           <div @click="removeFromCart($event)">
             <font-awesome-icon :class="(cartNum !== 0) ? ['cart-modify-btn'] : ['cart-modify-btn-disable']" icon="minus-circle" fixed-width />
           </div>
-          
+
           <!-- <van-stepper :value="cartNum" theme="round" integer min="0" :max="stock" @plus="addToCart()" @minus="removeFromCart()" /> -->
         </div>
       </div>
@@ -61,6 +61,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
+.cart-num {
+  background-color: #EEE;
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+
 .good-info {
   margin: 8px 5px;
   padding: 10px;
@@ -132,6 +138,6 @@ export default {
   width: 120px;
   height: 120px;
   border: solid 1px white;
-  border-radius: 15px;
+  border-radius: 30px;
 }
 </style>

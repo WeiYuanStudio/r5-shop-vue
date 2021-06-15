@@ -1,14 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from '@/App.vue'
 
 /* Vues */
 import router from './router'
 import store from './store'
-
-/* Mint UI */
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
-import {Lazyload} from 'mint-ui'
 
 /* Vant */
 import Vant from 'vant';
@@ -21,9 +16,6 @@ import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
 /* Use Vue */
 Vue.use(Vant)
-Vue.use(MintUI)
-Vue.use(Lazyload)
-
 
 /* import font-awesome lib */
 library.add(faHome)

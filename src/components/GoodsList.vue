@@ -1,74 +1,77 @@
 <template>
   <div>
-    <div class="page-good-list">
-      <van-tree-select height="80vh" :items="items" :main-active-index.sync="active">
-        <template #content>
+    <van-pull-refresh v-model="isLoading" @refresh="refreshProductList">
+      <div class="page-good-list">
+        <div v-if="productList.length > 0">
+          <div v-for="product in showProductList" :key="product.id">
+            <ItemGood
+                v-if="product.name.includes(productsNameKey)"
+                :goodInfo="product"
+                v-on:cart-ball="onCartBall($event)"
+            />
+          </div>
+        </div>
+        <div v-else>
+          <van-empty description="暂无数据"></van-empty>
+        </div>
 
-          <div v-if="productList.length>0">
-            <div v-for="(good, index) in productList" :key="index">
-              <ItemGood v-if="good.name.includes(productsNameKey)"  :goodInfo="good" v-on:cart-ball="onCartBall($event)"/>
-
+        <div class="ball-wrap">
+          <transition
+              @before-enter="beforeEnter"
+              @enter="enter"
+              @after-enter="afterEnter"
+          >
+            <div class="ball" v-show="ball.show">
+              <div class="inner">
+                <font-awesome-icon
+                    class="cartModifyBtn"
+                    icon="plus-circle"
+                    fixed-width
+                />
+              </div>
             </div>
-          </div>
-          <div v-else>
-            <van-empty description="暂无数据">
-            </van-empty>
-          </div>
-
-        </template>
-      </van-tree-select>
-
-
-      <div class="ball-wrap">
-        <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
-          <div class="ball" v-show="ball.show">
-            <div class="inner">
-              <font-awesome-icon class="cartModifyBtn" icon="plus-circle" fixed-width />
-            </div>
-          </div>
-        </transition>
+          </transition>
+        </div>
       </div>
-    </div>
+    </van-pull-refresh>
   </div>
 </template>
 
 <script>
-import { Indicator, Toast } from "mint-ui";
+import axios from "axios";
+import {Toast} from "vant";
 
 import ItemGood from "@/components/ItemGood.vue";
-import axios from "axios";
 
 export default {
-  props: ['productsNameKey'],
-  components: { ItemGood },
+  props: ["productsNameKey"],
+  components: {ItemGood},
   data() {
     return {
+      isLoading: false,
       ball: {
         show: false,
         el: null,
       },
       productList: [],
       active: 0,
-      items: [{ text: '分组 1' }, { text: '分组 2' }],
+      items: [{text: "分组 1"}, {text: "分组 2"}],
     };
   },
   mounted() {
-    Indicator.open("店小二正在拼命加载商品...");
-    axios
-      .get("/api/products/")
-      .then((resp) => {
-        this.productList = resp.data.results;
+    this.refreshProductList()
+  },
+  computed: {
+    showProductList() {
+      return this.productList.filter(item => {
+        const categoryId = this.$store.getters.getCategoryId
+        if (categoryId !== -1) {
+          return categoryId === item.category.id
+        } else {
+          return true
+        }
       })
-      .catch(() => {
-        Toast({
-          message: "加载商品列表失败",
-          position: "bottom",
-          duration: 2000,
-        });
-      })
-      .finally(() => {
-        Indicator.close();
-      });
+    }
   },
   methods: {
     beforeEnter(el) {
@@ -98,6 +101,25 @@ export default {
     onCartBall(e) {
       this.ball.show = true;
       this.ball.el = e.target;
+    },
+    refreshProductList() {
+      Toast.loading("加载商品...");
+      axios
+          .get("/api/products/")
+          .then((resp) => {
+            this.productList = resp.data.results;
+          })
+          .catch(() => {
+            Toast({
+              message: "加载商品列表失败",
+              position: "bottom",
+              duration: 2000,
+            });
+          })
+          .finally(() => {
+            Toast.clear();
+            this.isLoading = false
+          });
     },
   },
 };

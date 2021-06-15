@@ -11,6 +11,7 @@ export default new Vuex.Store({
         total: 0,
         selectedAddressId: null,
         selectedAddress: null,
+        selectCategoryId: -1
     },
     mutations: {
         setTotal(state, data){
@@ -49,6 +50,9 @@ export default new Vuex.Store({
         },
         setAddress(state, data) {
             state.selectedAddress = data
+        },
+        setCategoryId(state, id) {
+            state.selectCategoryId = id
         }
     },
     getters: {
@@ -85,5 +89,8 @@ export default new Vuex.Store({
                 return state.selectedAddress
             }
         },
+        getCategoryId(state) {
+            return state.selectCategoryId
+        }
     }
 });
