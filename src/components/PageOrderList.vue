@@ -35,7 +35,11 @@ export default {
     axios.get("/api/order/").then(resp => {
       this.orderList = resp.data.results
     }).catch(e => {
-      Toast.fail(e)
+      if (e.response.status === 401) {
+        Toast.fail('请先登录')
+      } else {
+        Toast.fail(e)
+      }
     })
   }
 };
