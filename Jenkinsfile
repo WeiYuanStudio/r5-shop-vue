@@ -37,8 +37,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 sh 'coscmd config -a ${COS_SECRET_ID} -s ${COS_SECRET_KEY} -b ${COS_BUCKET} -r ${COS_REGION}'
-                sh 'coscmd -d upload -rs --delete dist/ /'
-                input 'Y' //for "WARN: you are deleting some files in the '' cos_path, please make sure [y/N] "
+                sh 'yes | coscmd -d upload -rs --delete dist/ /' //yes for "WARN: you are deleting some files in the '' cos_path, please make sure [y/N] "
             }
         }
 
